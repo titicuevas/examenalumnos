@@ -4,7 +4,7 @@
     </x-slot>
     <div class="flex flex-col items-center mt-4">
         <h1 class="mb-4 text-2xl font-semibold">Criterios</h1>
-        <div> Nombre del alumno: {{$alumno->nombre}}</div>
+        <div> Nombre del alumno: {{ $alumno->nombre }}</div>
         <div class="border border-gray-200 shadow">
 
             <table>
@@ -36,13 +36,13 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{$nota->ccee->ce}}
+                                    {{ $nota->ccee->ce }}
                                 </div>
                             </td>
 
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{$nota->ccee->descripcion}}
+                                    {{ $nota->ccee->descripcion }}
                                 </div>
                             </td>
 
@@ -50,31 +50,48 @@
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
 
-                                    {{$nota->nota}}
+                                    {{ $nota->nota }}
                                 </div>
                             </td>
 
-
-
+                        </tr>
                     @endforeach
+                    <tr>
+                        <td></td>
+                        <td></td>
+
+                        <td class="">Media:</td>
+                        <td class="px-6 py-4">
+                            <div
+                                @if ($media > 5) class = "text-green-500 text-sm";
+                                    @else
+                                    class = "text-red-500 text-sm" @endif=>
+
+
+                                {{ $media }}
+                            </div>
+                        </td>
+
+                    </tr>
+
                 </tbody>
             </table>
+
         </div>
         <a href="/alumnos" class="mt-4 text-blue-900 hover:underline">Volver a los alumnos</a>
     </div>
 
 </x-app-layout>
-{{$alumno}}
+{{ $alumno }}
 
 <br>
-{{$alumno->notas->first()->nota}}
+{{ $alumno->notas->first()->nota }}
 <br>
 
-{{$alumno->nombre}}
+{{ $alumno->nombre }}
 <br>
 @foreach ($alumno->notas as $nota)
-
-{{$nota->ccee->ce}}-
-{{$nota->ccee->descripcion}}-
-{{$nota->nota}} <br>
+    {{ $nota->ccee->ce }}-
+    {{ $nota->ccee->descripcion }}-
+    {{ $nota->nota }} <br>
 @endforeach

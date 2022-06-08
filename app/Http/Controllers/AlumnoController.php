@@ -114,7 +114,11 @@ class AlumnoController extends Controller
 
     public function criterios(Alumno $alumno){
 
-
-        return view('alumnos.criterios',['alumno'=>$alumno,]);
+        $media = $alumno->notas->avg('nota');
+        //dd($media);
+        return view('alumnos.criterios',[
+            'alumno' => $alumno,
+            'media' => $media
+        ]);
     }
 }
