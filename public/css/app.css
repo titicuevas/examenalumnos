@@ -858,6 +858,12 @@ select {
 .border {
   border-width: 1px;
 }
+.border-2 {
+  border-width: 2px;
+}
+.border-8 {
+  border-width: 8px;
+}
 .border-b {
   border-bottom-width: 1px;
 }
@@ -955,6 +961,10 @@ select {
 .bg-red-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;

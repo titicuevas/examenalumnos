@@ -31,7 +31,7 @@
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-blue-500 hover:underline">
                                 <a href="{{ route('alumnos.show', $alumno) }}">
-                                    {{ $alumno->id }}
+                                    {{ $nota->id }}
                                 </a>
                             </td>
                             <td class="px-6 py-4">
@@ -61,13 +61,9 @@
                         <td></td>
 
                         <td class="">Media:</td>
-                        <td class="px-6 py-4">
-                            <div
-                                @if ($media > 5) class = "text-green-500 text-sm";
-                                    @else
-                                    class = "text-red-500 text-sm" @endif=>
-
-
+                        <td  @if ($media > 5) class = "px-6 py-4 text-align text-white-500 bg-green-500 text-sm";
+                            @else
+                            class = "px-6 py-4 text-white-500 text-sm bg-red-500 " @endif>
                                 {{ $media }}
                             </div>
                         </td>

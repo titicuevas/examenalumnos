@@ -114,11 +114,20 @@ class AlumnoController extends Controller
 
     public function criterios(Alumno $alumno){
 
+        //dd(($alumno->notas->count()!=0));
+        if ($alumno->notas->count()!=0) {
+            # code...
+
         $media = $alumno->notas->avg('nota');
         //dd($media);
         return view('alumnos.criterios',[
             'alumno' => $alumno,
             'media' => $media
         ]);
+    }
+    else{
+        return redirect()->route('alumnos.index')->with('error','No puedes entrar en un alumno sin notas');
+    }
+
     }
 }
