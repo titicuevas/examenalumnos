@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAlumnoRequest;
 use App\Http\Requests\UpdateAlumnoRequest;
 use App\Models\Alumno;
+use App\Models\Ccee;
+
 
 class AlumnoController extends Controller
 {
@@ -15,7 +17,15 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        //
+
+        $alumnos = (Alumno::withAvg('notas','nota')->get());
+
+        /* return( $alumnos->where('nombre','<>','Dani'));
+
+        return $alumnos->find(3)->withavg('notas','nota')->get(); */
+
+        return view('alumnos.index',['alumnos'=>$alumnos]);
+
     }
 
     /**
@@ -25,7 +35,8 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        //
+        return view('alumnos.create',['alumno'=> new alumno]);
+
     }
 
     /**
@@ -36,7 +47,14 @@ class AlumnoController extends Controller
      */
     public function store(StoreAlumnoRequest $request)
     {
-        //
+        $alumno = new Alumno($request->validated());
+
+        /* $alumno = new Alumno();
+        $alumno->fill($request->validated());
+ */
+        $alumno->save();
+
+        return redirect()->route('alumnos.index')->with('success','alumno creado correctamente');
     }
 
     /**
@@ -47,7 +65,9 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
-        //
+        $ccees = Ccee::all();
+
+        return view('alumnos.show',compact(['alumno','ccees']));
     }
 
     /**
@@ -58,7 +78,8 @@ class AlumnoController extends Controller
      */
     public function edit(Alumno $alumno)
     {
-        //
+        return view('alumnos.edit', compact('alumno'));
+
     }
 
     /**
@@ -70,7 +91,12 @@ class AlumnoController extends Controller
      */
     public function update(UpdateAlumnoRequest $request, Alumno $alumno)
     {
-        //
+        $alumno->fill($request->validated());
+
+        $alumno->save();
+
+        return redirect()->route('alumnos.index')->with('success','alumno editado correctamente');
+
     }
 
     /**
