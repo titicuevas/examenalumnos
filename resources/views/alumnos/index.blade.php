@@ -10,7 +10,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="p-6 bg-white border-b border-gray-200">
 
-           
+
 
 
 
@@ -18,6 +18,7 @@
               ($alumnos[0]->notas->contains('ccee_id', '1'))
             --}}
 
+            <x-session/>
 
 
 
@@ -59,9 +60,9 @@
 
 
                     <td class="p-3 bg-blue-700 ">
-                      <a href="{{ route('alumnos.show', $alumno, false) }}"
+                      <a href="{{ route('alumno.criterio', $alumno, false) }}"
                         class="text-gray-100 hover:text-green-400 mr-2">
-                        <i class="material-icons-outlined text-base">Mostrar</i>
+                        <i class="material-icons-outlined text-base">Criterios</i>
                       </a>
                     </td>
 
@@ -98,6 +99,7 @@
                   nuevo alumno</button>
               </a>
             </div>
+
 
 
           </div>

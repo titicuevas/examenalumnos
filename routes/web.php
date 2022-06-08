@@ -25,5 +25,5 @@ Route::get('/dashboard', function () {
 
 Route::resource('alumnos', AlumnoController::class)->middleware(['auth']);
 
-
+Route::get('alumnos/criterios/{alumno}',[AlumnoController::class,'criterios'])->name('alumno.criterio');
 require __DIR__.'/auth.php';
